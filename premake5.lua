@@ -32,12 +32,15 @@ project "vsstl"
     files {
         "%{prj.name}/include/**.h",
         "%{prj.name}/src/**.h",
-        "%{prj.name}/src/**.cpp"
+        "%{prj.name}/src/**.cpp",
+        "%{prj.name}/vendor/**.h",
+        "%{prj.name}/vendor/**.cpp",
     }
 
     includedirs {
-        "%{prj.name}/",
+        "%{prj.name}/include/",
         "%{prj.name}/src/",
+        "%{prj.name}/vendor/spdlog/include",
     }
 
     filter "system:windows"
@@ -113,7 +116,7 @@ project "sandbox"
     includedirs {
         "%{prj.name}/src",
         "vsstl/src",
-        "vsstl/",
+        "vsstl/include/",
         "tests/"
     }
 

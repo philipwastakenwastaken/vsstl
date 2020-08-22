@@ -1,6 +1,6 @@
 #include <iostream>
-#include "src/data_structures/graphs/tree.h"
-
+#include "data_structures/graphs/tree.h"
+#include "vsstl/pathfinding.h"
 
 int main() {
 

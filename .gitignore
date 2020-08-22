@@ -1,3 +1,4 @@
+# build products
 bin/
 bin-int/
 
@@ -6,7 +7,8 @@ bin-int/
 
 # premake products
 Makefile
-vsstl/
+vsstl/Makefile
+sandbox/Makefile
 compile_commands/
 compile_commands.json
 

@@ -4,6 +4,7 @@ bin-int/
 
 .vscode/
 .clangd/
+export_compile_commands.sh
 
 # premake products
 Makefile

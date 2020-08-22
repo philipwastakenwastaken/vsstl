@@ -22,6 +22,8 @@ project "vsstl"
     exceptionhandling ("off")
 
     defines "SPDLOG_NO_EXCEPTIONS" -- required when exception are disabled for spdlog
+    defines "FMT_HEADER_ONLY"
+
     pchheader "vsstlpch.h"
     pchsource "vsstl/src/vsstlpch.cpp"
     warnings "extra"
@@ -30,11 +32,8 @@ project "vsstl"
     objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
 
     files {
-        "%{prj.name}/include/**.h",
-        "%{prj.name}/src/**.h",
-        "%{prj.name}/src/**.cpp",
-        "%{prj.name}/vendor/**.h",
-        "%{prj.name}/vendor/**.cpp",
+        "%{prj.name}/**.h",
+        "%{prj.name}/**.cpp",
     }
 
     includedirs {
@@ -100,9 +99,10 @@ project "sandbox"
     staticruntime "on"
     rtti ("off")
     exceptionhandling ("off")
+    warnings "extra"
 
     defines "SPDLOG_NO_EXCEPTIONS" -- required when exception are disabled for spdlog
-    warnings "extra"
+    defines "FMT_HEADER_ONLY" -- exports fmt symbols
 
     targetdir ("bin/" .. outputdir .. "/%{prj.name}")
     objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -115,8 +115,9 @@ project "sandbox"
 
     includedirs {
         "%{prj.name}/src",
-        "vsstl/src",
+        "%vsstl/vendor/spdlog/include",
         "vsstl/include/",
+        "vsstl/src/",
         "tests/"
     }
 
@@ -141,20 +142,24 @@ project "sandbox"
     filter "configurations:Debug"
         runtime "Debug"
         symbols "on"
+        defines "VSSTL_DEBUG"
 
     filter "configurations:Test"
         runtime "Debug"
         symbols "on"
         optimize "full"
         flags {"LinkTimeOptimization"}
+        defines "VSSTL_DEBUG"
 
     filter "configurations:Release"
         runtime "Release"
         flags {"LinkTimeOptimization"}
         optimize "full"
         symbols "on"
+        defines "VSSTL_RELEASE"
 
     filter "configurations:Dist"
         runtime "Release"
         flags {"LinkTimeOptimization"}
         optimize "full"
+        defines "VSSTL_DIST"

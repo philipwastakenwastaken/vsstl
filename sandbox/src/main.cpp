@@ -1,16 +1,16 @@
 #include <iostream>
-#include "data_structures/graphs/tree.h"
-#include "vsstl/pathfinding.h"
+
+#include "vsstl/vsstl.h"
 
 int main() {
 
-    std::cout << "Hello World!\n";
-
+    vsstl::Log::init();
     vsstl::Adder adder;
     adder.a = 5;
     adder.b = 10;
+    adder.add();
 
-    std::cout << adder.add() << '\n';
+    VSSTL_ERROR("Heyo");
 
 
     return 0;

@@ -1,0 +1,13 @@
+bin/
+bin-int/
+
+.vscode/
+.clangd/
+
+# premake products
+Makefile
+vsstl/
+compile_commands/
+compile_commands.json
+
+

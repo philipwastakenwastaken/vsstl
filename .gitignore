@@ -3,14 +3,18 @@ bin/
 bin-int/
 
 .vscode/
-.clangd/
 export_compile_commands.sh
 
 # premake products
 Makefile
 vsstl/Makefile
 sandbox/Makefile
-compile_commands/
-compile_commands.json
 
+# clangd stuff
+debug/
+test/
+release/
+dist/
+compile_commands.json
+.clangd/
 

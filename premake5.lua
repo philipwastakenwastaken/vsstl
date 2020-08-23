@@ -73,9 +73,9 @@ project "vsstl"
     filter "configurations:Test"
         defines "VSSTL_DEBUG"
         runtime "Debug"
+        flags {"LinkTimeOptimization"}
         symbols "on"
         optimize "full"
-        flags {"LinkTimeOptimization"}
 
     filter "configurations:Release"
         defines "VSSTL_RELEASE"
@@ -115,7 +115,7 @@ project "sandbox"
 
     includedirs {
         "%{prj.name}/src",
-        "%vsstl/vendor/spdlog/include",
+        "vsstl/vendor/spdlog/include",
         "vsstl/include/",
         "vsstl/src/",
         "tests/"

@@ -1,7 +1,6 @@
 #pragma once
 #include "vsstlpch.h"
 
-
 namespace vsstl {
 
 
@@ -10,11 +9,19 @@ namespace vsstl {
     class UndirectedGraph {
         public:
 
-            inline auto size() const {return nodes;}
+            inline void add_node(NodeType& node) {nodes.push_back(node);}
+
+            inline void add_edge(NodeType* n1, NodeType* n2) {
+                n1->neighbours.push_back(n2);
+                n2->neighbours.push_back(n1);
+            }
+
+            inline auto size() const {return nodes.size();}
+            inline const NodeType& root() const {return nodes.front();}
+            inline       NodeType& root()       {return nodes.front();}
 
         private:
-            std::size_t nodes = 0;
-            NodeType root;
+            std::vector<NodeType> nodes;
 
 
 
